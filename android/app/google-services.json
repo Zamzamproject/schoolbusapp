@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "976122677882",
+    "project_id": "schoolbustracker-11ddd",
+    "storage_bucket": "schoolbustracker-11ddd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:976122677882:android:8d5170ab9cd32f795809c3",
+        "android_client_info": {
+          "package_name": "com.schoolbustracking"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAIZE8tMjMzgj0TCmTL88DRjOsg6536pbk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
