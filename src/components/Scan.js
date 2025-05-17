@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   Text,
   TouchableOpacity,
@@ -11,6 +11,7 @@ import {RNCamera} from 'react-native-camera';
 
 export default function Scan({navigation, route}) {
   const {bus_id} = route.params;
+  const [studentBus, setStudentBus] = useState('null');
 
   const handleCheckin = e => {
     let val = e.data;
@@ -30,7 +31,7 @@ export default function Scan({navigation, route}) {
           if(enableAlert) {
             Alert.alert(
               'Wrong Bus ID',
-              `This student is not affilate in this bus. student bus ID is ${bus_id}`,
+              `This student is not affilate in this bus.`,
               [
                 {
                   text: 'Close',
@@ -57,6 +58,9 @@ export default function Scan({navigation, route}) {
       .doc(student_id)
       .get()
       .then(sdoc => {
+        if(sdoc && sdoc.data() && sdoc.data().bus_id){
+          setStudentBus(sdoc.data().bus_id)
+        }
         if (sdoc.data() && sdoc.data().bus_id == bus_id) {          
           database()
             .ref('/students/' + rtdb_id)
@@ -73,7 +77,7 @@ export default function Scan({navigation, route}) {
         } else {
           Alert.alert(
             'Wrong Bus ID',
-            `This student is not affilate in this bus. student bus ID is ${bus_id}`,
+            `This student is not affilate in this bus. student bus ID is ${sdoc.data().bus_id}`,
             [
               {
                 text: 'Close',
@@ -92,7 +96,7 @@ export default function Scan({navigation, route}) {
         console.log(err);
         Alert.alert(
           'Wrong Bus ID',
-          `This student is not affilate in this bus. student bus ID is ${bus_id}`,
+          `This student is not affilate in this bus.`,
           [
             {
               text: 'Close',
