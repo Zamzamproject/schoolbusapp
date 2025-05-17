@@ -270,8 +270,8 @@ export default function Driver({navigation}) {
   };
 
   const sendNotification = (to_token, checkin, name, method) => {    
-    const title = 'Hi ' + name + ', school bus update'
-    const message = checkin ? method == 'QR Code' ? 'Successfull' : name + ' is in the school bus.' : name + ' arrived to home!';
+    const title = 'School Bus Tracker Alert'
+    const message = checkin ? method == 'QR Code' ? name + ' is in the school bus.' : name + ' arrived to home!' : 'Successfull';
     
     if (to_token && to_token != '') {
       fetch('https://sbdnotify.netlify.app/api/notification/', {
